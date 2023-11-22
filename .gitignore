@@ -1,0 +1,15 @@
+# Large folders
+node_modules/
+
+# ------------------------------
+
+# Environment variables
+.env
+
+# ------------------------------
+
+# Lock files
+yarn.lock
+package-lock.json
+
+# ------------------------------

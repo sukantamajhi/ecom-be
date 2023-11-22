@@ -1,0 +1,16 @@
+{
+    "SIGNUP_FAILED": "User signup failed",
+    "USER_EXISTS": "User already existed with this email id",
+    "USER_CREATE_FAILED": "User create failed",
+    "USER_CREATED_SUCCESS": "User created successfully",
+    "INTERNAL_SERVER_ERROR": "Internal server error",
+    "USER_NOT_FOUND": "User not found",
+    "USER_LOGGEDIN_SUCCESS": "User logged in successfully",
+    "PASSWORD_MISMATCH_ERROR": "Password mismatched",
+    "USERS_FOUND_SUCCESSFUL": "Users found successfully",
+    "NO_USERS_FOUND": "No users found",
+    "PASSWORD_RESET": "Password reset successful",
+    "ADD_PRODUCT_FAILED": "Product add failed",
+    "PRODUCT_UPLOAD_FAILED": "Failed to upload product",
+    "PRODUCT_UPLOAD_SUCCESS": "Product added successfully"
+}
