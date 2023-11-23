@@ -18,9 +18,18 @@ const userSchema = new Schema({
     password: {
         type: String
     },
+    role: {
+        type: String,
+        default: "user",
+        enum: ["user", "moderator", "admin", "manager", "retailer"]
+    },
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    deletedAt: {
+        type: Date,
+        default: null
     }
 }, {
     timestamps: true

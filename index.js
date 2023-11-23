@@ -4,13 +4,14 @@ require("dotenv").config()
 const connectToDb = require("./src/database/db")
 const router = require("./src/routes")
 const cors = require("cors")
+const config = require("./src/config")
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-if (process.env.MODE !== "production") {
+if (config.nodeEnv !== "production") {
     app.use(morgan("tiny"))
 }
 

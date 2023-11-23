@@ -12,5 +12,10 @@
     "PASSWORD_RESET": "Password reset successful",
     "ADD_PRODUCT_FAILED": "Product add failed",
     "PRODUCT_UPLOAD_FAILED": "Failed to upload product",
-    "PRODUCT_UPLOAD_SUCCESS": "Product added successfully"
+    "PRODUCT_UPLOAD_SUCCESS": "Product added successfully",
+    "PRODUCTS_FETCHED": "Products retrieved successfully",
+    "PRODUCTS_FETCH_FAILED": "Failed to retrieve products",
+    "PRODUCT_NOT_FOUND": "Product not found",
+    "PRODUCT_UPDATE_FAILED": "Product updated failed",
+    "PRODUCT_UPDATED": "Product updated successfully"
 }

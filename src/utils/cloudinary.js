@@ -11,22 +11,22 @@ const handleUpload = (file) => {
     return new Promise(async (resolve, reject) => {
         try {
             const b64 = Buffer.from(file.buffer).toString("base64");
-            let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+            let dataURI = "data:" + file.mimetype + ";base64," + b64;
 
             cloudinary.uploader.upload(dataURI, { public_id: file.originalname }, function (error, result) {
                 if (error) {
                     console.error(error, "<<-- Error in image upload")
-                    return reject({
-                        success: false,
-                        message: messages["PRODUCT_UPLOAD_FAILED"]
-                    })
+                    return reject(error)
                 } else {
                     console.log(result, "<<-- result after image upload")
-                    return result
+                    return resolve(result)
                 }
             })
         } catch (error) {
             console.error(error, "<<-- Error in file upload to cloudinary")
+            return reject(error)
         }
     })
 }
+
+module.exports = handleUpload
