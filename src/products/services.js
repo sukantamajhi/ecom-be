@@ -37,7 +37,7 @@ module.exports = {
     getAllProducts: (req) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const products = await productModel.find({})
+                const products = await productModel.find({ createdBy: req.params.userId ?? req.user._id }).sort({ createdAt: -1 })
 
                 if (products.length > 0) {
                     return resolve({
@@ -76,6 +76,15 @@ module.exports = {
                         message: messages["PRODUCT_NOT_FOUND"]
                     })
                 } else {
+                    let images;
+                    if (req?.files?.length > 0) {
+                        images = await Promise.all(req.files.map(async file => {
+                            const data = await handleUpload(file)
+                            return data.secure_url
+                        }))
+                    }
+
+                    images = [...images, imageUrl]
                     const updatedProd = await productModel.updateOne({ _id: prodId }, { $set: { name, description, price, category, imageUrl } })
 
                     if (!updatedProd.acknowledged) {
@@ -104,13 +113,42 @@ module.exports = {
         })
     },
 
-    // delete: (req) => {
-    //     return new Promise(async (resolve, reject) => {
-    //         try {
+    delete: (req) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const { prodIds } = req.body
 
-    //         } catch (error) {
-    //             console.error(error, "<<-- Error in ")
-    //         }
-    //     })
-    // }
+                const deletedProd = await Promise.all(prodIds.map(async prodId => {
+                    const product = await productModel.findOne({ _id: prodId, createdBy: req.user._id, isDeleted: false })
+
+                    if (product) {
+                        product.isDeleted = true;
+                        product.deletedAt = new Date();
+
+                        const deletedProd = await product.save()
+                        return deletedProd
+                    }
+                }))
+
+                if (deletedProd?.length > 0) {
+                    return resolve({
+                        success: true,
+                        message: messages["PRODUCTS_DELETED_SUCCESS"],
+                        result: deletedProd
+                    })
+                } else {
+                    return reject({
+                        success: false,
+                        message: messages["PRODUCTS_DELETE_FAILED"]
+                    })
+                }
+            } catch (error) {
+                console.error(error, "<<-- 🚀 Error in delete product")
+                return reject({
+                    success: false,
+                    message: messages["INTERNAL_SERVER_ERROR"]
+                })
+            }
+        })
+    }
 }

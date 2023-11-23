@@ -13,3 +13,7 @@ yarn.lock
 package-lock.json
 
 # ------------------------------
+
+# Not adding file
+
+swagger_output.json
