@@ -1,5 +1,6 @@
 const express = require("express");
 const verifyToken = require("../middlewares/verifyToken");
+const services = require("./services");
 const router = express.Router()
 
 
@@ -24,7 +25,7 @@ router.post("/", verifyToken, (req, res) => {
  * @name getAllCategories
  */
 router.get("/", (req, res) => {
-    services.getAllCategories()
+    services.getAllCategories(req)
         .then(categories => res.status(200).send(categories))
         .catch(err => res.status(500).send(err));
 });
@@ -49,10 +50,10 @@ router.put("/:categoryId", verifyToken, (req, res) => {
  * @function
  * @name deleteCategory
  */
-router.delete("/:categoryId", verifyToken, (req, res) => {
-    services.deleteCategory(req)
-        .then(() => res.status(200).send({ message: "Category deleted successfully." }))
-        .catch(err => res.status(500).send(err))
-});
+// router.delete("/:categoryId", verifyToken, (req, res) => {
+//     services.deleteCategory(req)
+//         .then(() => res.status(200).send({ message: "Category deleted successfully." }))
+//         .catch(err => res.status(500).send(err))
+// });
 
 module.exports = router

@@ -15,15 +15,15 @@ const handleUpload = (file) => {
 
             cloudinary.uploader.upload(dataURI, { public_id: file.originalname }, function (error, result) {
                 if (error) {
-                    console.error(error, "<<-- Error in image upload")
+                    logger.error(error, "<<-- Error in image upload")
                     return reject(error)
                 } else {
-                    console.log(result, "<<-- result after image upload")
+                    logger.info(result, "<<-- result after image upload")
                     return resolve(result)
                 }
             })
         } catch (error) {
-            console.error(error, "<<-- Error in file upload to cloudinary")
+            logger.error(error, "<<-- Error in file upload to cloudinary")
             return reject(error)
         }
     })

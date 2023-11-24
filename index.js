@@ -7,6 +7,7 @@ const cors = require("cors")
 const config = require("./src/config")
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger_output.json')
+const logger = require("./logger/logger")
 
 const app = express()
 
@@ -27,5 +28,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(4000, () => {
-    console.log("⚡️ Server is running on port 4000 ⚡️")
+    logger.info("⚡️ Server is running on port 4000 ⚡️")
 })

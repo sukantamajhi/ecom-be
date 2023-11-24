@@ -33,7 +33,7 @@ const verifyToken = (req, res, next) => {
 
                 next()
             } catch (error) {
-                console.error(error, "<<-- Error in verifying token")
+                logger.error(error, "<<-- Error in verifying token")
                 return res.status(400).send({
                     success: false,
                     message: "Incorrect token",

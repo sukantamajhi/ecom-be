@@ -3,7 +3,7 @@ const userModel = require("./model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const config = require("../config")
-const { nanoid } = require("nanoid")
+const logger = require("../../logger/logger")
 
 module.exports = {
     signup: (req) => {
@@ -45,7 +45,7 @@ module.exports = {
                     })
                 }
             } catch (error) {
-                console.error(error, "<<-- error in user signup")
+                logger.error(error, "<<-- error in user signup")
                 return reject({
                     success: false,
                     message: messages["INTERNAL_SERVER_ERROR"],
@@ -88,7 +88,7 @@ module.exports = {
                     }
                 }
             } catch (error) {
-                console.error(error, "<<-- error in user sign in")
+                logger.error(error, "<<-- error in user sign in")
                 return reject({
                     success: false,
                     message: messages["INTERNAL_SERVER_ERROR"],
@@ -126,7 +126,7 @@ module.exports = {
                     })
                 }
             } catch (error) {
-                console.error(error, "<<-- Error in forgot password")
+                logger.error(error, "<<-- Error in forgot password")
                 return reject({
                     success: false,
                     message: messages["INTERNAL_SERVER_ERROR"],

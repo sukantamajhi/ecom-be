@@ -1,3 +1,4 @@
+const logger = require("../../logger/logger")
 const userModel = require("../auth/model")
 const messages = require("../utils/messages.json")
 
@@ -20,7 +21,7 @@ module.exports = {
                     })
                 }
             } catch (error) {
-                console.error(error, "<<-- Error in getting all users")
+                logger.error(error, "<<-- Error in getting all users")
                 return reject({
                     success: false,
                     message: messages["INTERNAL_SERVER_ERROR"],
