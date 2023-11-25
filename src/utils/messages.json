@@ -36,5 +36,8 @@
     "ITEM_ADD_TO_CART_SUCCESS": "Item added to cart successfully",
     "ITEM_ADD_TO_WISHLIST_FAILED": "Item failed to add to wishlist",
     "ITEM_ADD_TO_WISHLIST_SUCCESS": "Item added to wishlist successfully",
-    "ITEM_REMOVE_FROM_WISHLIST_SUCCESS": "Item removed from wishlist successfully"
+    "ITEM_REMOVE_FROM_WISHLIST_SUCCESS": "Item removed from wishlist successfully",
+    "STRIPE_USER_CREATE_FAILED": "Failed to create customer to stripe",
+    "NO_PRODUCTS_ADDED_TO_CART": "No products added to the cart",
+    "PRODUCT_PURCHASED": "Product purchased successfully"
 }
