@@ -134,5 +134,16 @@ module.exports = {
                 })
             }
         })
-    }
+    },
+
+    test: (req) => {
+        return new Promise(async (resolve, reject) => {
+          try {
+            console.log(req.body);
+            return resolve(req.body);
+          } catch (e) {
+            return reject(e)
+          }
+        })
+      }
 }
