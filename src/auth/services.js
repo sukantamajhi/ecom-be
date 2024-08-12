@@ -117,7 +117,7 @@ module.exports = {
 
                     user.password = hashPass
 
-                    const updatedUser = await user.save()
+                    await user.save()
 
                     return resolve({
                         success: true,

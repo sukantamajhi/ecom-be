@@ -15,7 +15,7 @@ router.use(verifyToken);
  * @route - POST /api/products/add-product
  * @description - Add a new product with the option to upload up to 8 images.
  * @access - Private (requires authentication)
- * @body - { name: string, description: string, price: string, category: string }
+ * @body - { name: string, description: string, price: string, category: string, files: array }
  * @file - files
  */
 router.post("/add-product", upload.array("files", 8), (req, res) => {

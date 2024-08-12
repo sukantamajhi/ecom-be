@@ -3,14 +3,14 @@ const { createUser, createCharge } = require("../stripeController");
 const handleUpload = require("../utils/cloudinary");
 const messages = require("../utils/messages.json");
 const cartModel = require("./models/cartModel");
-const productModel = require("./models/model");
+const productModel = require("./models/productModel");
 const wishlistModel = require("./models/wishlistModel");
 
 module.exports = {
 	addProduct: (req) => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const { name, description, price, category } = req.body;
+				const { name, description, price, categories } = req.body;
 				const { _id } = req.user;
 				const images = await Promise.all(
 					req.files.map(async (file) => {
@@ -23,7 +23,7 @@ module.exports = {
 					name,
 					description,
 					price,
-					category,
+					categories,
 					imageUrl: images,
 					createdBy: _id,
 				});

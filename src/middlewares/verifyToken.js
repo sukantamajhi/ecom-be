@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken")
 const config = require("../config")
 const userModel = require("../auth/model")
+const logger = require("../../logger/logger")
 
 const verifyToken = (req, res, next) => {
     return new Promise(async (resolve, reject) => {

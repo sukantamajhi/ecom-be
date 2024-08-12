@@ -5,7 +5,7 @@
     "author": "Sukanta Majhi<sukanta.majhi@codeclouds.co.in>",
     "license": "MIT",
     "scripts": {
-        "start": "node index.js",
+        "start": "node --watch index.js",
         "dev": "nodemon index.js",
         "gendoc": "node swagger.js"
     },
@@ -20,9 +20,12 @@
         "mongoose": "^8.0.1",
         "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.1",
+        "orgattire-be": "file:",
         "pino": "^8.16.2",
         "pino-pretty": "^10.2.3",
-        "stripe": "^14.5.0"
+        "stripe": "^14.5.0",
+        "swagger-autogen": "^2.23.7",
+        "swagger-ui-express": "^5.0.1"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.2",

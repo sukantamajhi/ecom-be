@@ -17,7 +17,7 @@ const productSchema = new Schema({
         required: true,
         min: 0,
     },
-    category: [{
+    categories: [{
         type: Schema.Types.ObjectId,
         ref: 'productcategories', // Reference to the product category
     }],
@@ -42,16 +42,19 @@ const productSchema = new Schema({
 })
 
 productSchema.pre("save", function (next) {
+    this.populate("categories", ["_id", "name"])
     this.populate("createdBy", ["_id", "name", "email"])
     next()
 })
 
 productSchema.pre("findOne", function (next) {
+    this.populate("categories", ["_id", "name"])
     this.populate("createdBy", ["_id", "name", "email"])
     next()
 })
 
 productSchema.pre("find", function (next) {
+    this.populate("categories", ["_id", "name"])
     this.populate("createdBy", ["_id", "name", "email"])
     next()
 })
